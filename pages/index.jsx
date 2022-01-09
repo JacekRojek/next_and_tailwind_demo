@@ -2,7 +2,7 @@ import { debounce } from "lodash";
 import Head from "next/head";
 import { useState, useCallback } from "react";
 import EmptyListPlaceholder from "../components/emtyListPlaceholder";
-import SearchResult from "../components/searchResults";
+import SearchResult from "../components/searchResult";
 import { API } from "../config";
 
 const searchEndpoint = (query) => `${API}/people/?search=${query}`;
@@ -30,6 +30,7 @@ export default function Home() {
       const json = await res.json();
       const {results} = json
       setResults(results || []);
+      setIsLoading(false)
     })
   }, []);
   return (
@@ -71,7 +72,7 @@ export default function Home() {
           />
         </div>
         <div className="bg-background-light flex flex-1 flex-col">
-          {results.length > 0 ? results.map((person) => (
+          {results.length > 0 && query.length > 0 ? results.map((person) => (
             <SearchResult key={person.name} person={person} />
           )) : <EmptyListPlaceholder query={query} isLoading={isLoading}/> }
         </div>

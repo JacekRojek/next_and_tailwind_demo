@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-export default function SearchResults({ person }) {
-  console.log(person)
+export default function SearchResult({ person }) {
   return (
     <div className="m-2" >
       <Link

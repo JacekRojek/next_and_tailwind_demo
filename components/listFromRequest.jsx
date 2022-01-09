@@ -6,7 +6,6 @@ export default function ListFromRequest({ urls, title, dataKey }) {
     Promise.all(urls.map((url) => fetch(url).then((resp) => resp.json()))).then(
       (respData) => {
         setData(respData);
-        console.log(title, respData);
       }
     );
   }, []);

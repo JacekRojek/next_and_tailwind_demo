@@ -16,7 +16,6 @@ export default function Person({ person }) {
     url,
     ...bodyParams
   } = person;
-  console.log(person)
   return (
     <div className="bg-background-dark flex h-screen">
       <Head>
